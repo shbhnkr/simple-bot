@@ -56,9 +56,13 @@ async def on_message(message):
     
   msg = message.content
 
-  options = starter_encouragements
-  if "encouragements" in db.keys():
-    options = options + db["encouragements"]
+  if db["responding"]:
+    options = starter_encouragements
+    if "encouragements" in db.keys():
+      options = options + db["encouragements"]
+
+    if any(word in msg for word in sad_words):
+      await message.channel.send(random.choice(options))
   
   if message.content.startswith("$cheems"):
     await message.channel.send(random.choice(doggo_list))
@@ -66,9 +70,6 @@ async def on_message(message):
   if message.content.startswith("$inspire"):
     quote = get_quote()
     await message.channel.send(quote)
-
-  if any(word in msg for word in sad_words):
-    await message.channel.send(random.choice(options))
 
   if msg.startswith("$new"):
     encouraging_message = msg.split("$new ",1)[1]
