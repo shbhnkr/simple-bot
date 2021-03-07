@@ -2,12 +2,13 @@
 name = "simple-bot"
 version = "0.1.0"
 description = ""
-authors = ["Your Name <you@example.com>"]
+authors = ["Shubhankar Darbari"]
 
 [tool.poetry.dependencies]
 python = "^3.8"
 discord = "^1.0.1"
 flask = "^1.1.2"
+replit = "^2.0.0"
 
 [tool.poetry.dev-dependencies]
 
